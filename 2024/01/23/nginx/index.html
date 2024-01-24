@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Nginx | Funkynoob的个人博客</title><meta name="author" content="JiangHaiYang aka Funkynoob"><meta name="copyright" content="JiangHaiYang aka Funkynoob"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于Nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx">
+<meta property="og:url" content="https://funkynoob.github.io/2024/01/23/nginx/index.html">
+<meta property="og:site_name" content="Funkynoob的个人博客">
+<meta property="og:description" content="关于Nginx">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://funkynoob.github.io/images/funkynoob_avatar.jpg">
+<meta property="article:published_time" content="2024-01-23T14:08:01.000Z">
+<meta property="article:modified_time" content="2024-01-24T06:30:08.408Z">
+<meta property="article:author" content="JiangHaiYang aka Funkynoob">
+<meta property="article:tag" content="Nginx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://funkynoob.github.io/images/funkynoob_avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://funkynoob.github.io/2024/01/23/nginx/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Nginx',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-24 14:30:08'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/funkynoob_avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-solid fa-compass"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-solid fa-play"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐(待更新)</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影(待更新)</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa-regular fa-images"></i><span> 画廊(持续更新)</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fa-solid fa-gamepad"></i><span> 游戏(待更新)</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><span> Spring框架</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/spring/"><span> Spring</span></a></li><li><a class="site-page child" href="/springmvc/"><span> SpringMVC</span></a></li><li><a class="site-page child" href="/springcloud/"><span> SpringCloud</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><span> Web服务器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/2024/01/23/nginx"><span> Nginx</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/preview.gif')"><nav id="nav"><span id="blog-info"><a href="/" title="Funkynoob的个人博客"><span class="site-name">Funkynoob的个人博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-solid fa-compass"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa-solid fa-play"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐(待更新)</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影(待更新)</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa-regular fa-images"></i><span> 画廊(持续更新)</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fa-solid fa-gamepad"></i><span> 游戏(待更新)</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><span> Spring框架</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/spring/"><span> Spring</span></a></li><li><a class="site-page child" href="/springmvc/"><span> SpringMVC</span></a></li><li><a class="site-page child" href="/springcloud/"><span> SpringCloud</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><span> Web服务器</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/2024/01/23/nginx"><span> Nginx</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Nginx</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-23T14:08:01.000Z" title="发表于 2024-01-23 22:08:01">2024-01-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-24T06:30:08.408Z" title="更新于 2024-01-24 14:30:08">2024-01-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/web%E6%9C%8D%E5%8A%A1%E5%99%A8/">web服务器</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Nginx"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>使用平台: CentOS7</p>
+<p>使用工具: VmWare17、xftp7、OpenSSH_for_Windows_8.1</p>
+</blockquote>
+<h1 id="Nginx学习"><a href="#Nginx学习" class="headerlink" title="Nginx学习"></a><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="nginx.png"/>Nginx学习</h1><h2 id="CentOS配置"><a href="#CentOS配置" class="headerlink" title="CentOS配置"></a>CentOS配置</h2><h3 id="静态IP"><a href="#静态IP" class="headerlink" title="静态IP"></a>静态IP</h3><h4 id="VmWare配置"><a href="#VmWare配置" class="headerlink" title="VmWare配置"></a>VmWare配置</h4><p>进入Vmware，在最上方标签栏中找到 <strong>编辑 -&gt; 虚拟网络编辑器</strong>，进入网卡配置界面，如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="IP1.png" />
+
+<p>点击更改设置标签，如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="IP2.png" style="zoom: 67%;" />
+
+<p>首先选择VMnet8网卡，再点击<strong>下方NAT设置</strong>，如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="IP3.png" style="zoom:67%;" />
+
+<p>记住弹出对话框中的子网IP、子网掩码、网关。随后启动虚拟机</p>
+<h4 id="虚拟机设置"><a href="#虚拟机设置" class="headerlink" title="虚拟机设置"></a>虚拟机设置</h4><p>使用命令 <code>vi /etc/sysconfig/network-scripts/ifcfg-ens33</code> 编辑<code>ens33</code>网卡设置文件：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">TYPE</span>=<span class="string">Ethernet</span></span><br><span class="line"><span class="attr">PROXY_METHOD</span>=<span class="string">none</span></span><br><span class="line"><span class="attr">BROWSER_ONLY</span>=<span class="string">no</span></span><br><span class="line"><span class="attr">BOOTPROTO</span>=<span class="string">static #设置为静态IP，而不是dhcp动态分配</span></span><br><span class="line"><span class="attr">DEFROUTE</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV4_FAILURE_FATAL</span>=<span class="string">no</span></span><br><span class="line"><span class="attr">IPV6INIT</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV6_AUTOCONF</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV6_DEFROUTE</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV6_FAILURE_FATAL</span>=<span class="string">no</span></span><br><span class="line"><span class="attr">IPV6_ADDR_GEN_MODE</span>=<span class="string">stable-privacy</span></span><br><span class="line"><span class="attr">NAME</span>=<span class="string">ens33</span></span><br><span class="line"><span class="attr">UUID</span>=<span class="string">4565018e-6a54-4ffa-8ce2-802e725e46be</span></span><br><span class="line"><span class="attr">DEVICE</span>=<span class="string">ens33</span></span><br><span class="line"><span class="attr">ONBOOT</span>=<span class="string">yes #系统启动时，是否启动该网卡</span></span><br><span class="line"><span class="attr">IPADDR</span>=<span class="string">192.168.9.3 #IP地址，注意该地址必须为子网IP范围中的地址，即0~255</span></span><br><span class="line"><span class="attr">GATEWAY</span>=<span class="string">192.168.9.2 #网关，VmWare中设置的网关</span></span><br><span class="line"><span class="attr">NETMASK</span>=<span class="string">255.255.255.0 #子网掩码</span></span><br><span class="line"><span class="attr">DNS1</span>=<span class="string">8.8.8.8 #公网DNS服务器，可以配置多个，以DNS1，DNS2....排列</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑完成后，使用<code>:</code> + <code>wq</code> + <code>回车</code>保存并退出。</p>
+<p>使用<code>systemctl restart network</code>重启网络。</p>
+<p>尝试使用<code>ping</code> 或者 <code>curl</code>命令来判断配置是否成功，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com</span><br><span class="line">curl www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>若使用<code>ping</code>命令，出现下图，则代表网络畅通，配置成功：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="IP4.png" />
+
+<blockquote>
+<p>注意：linux的ping命令没有次数限制，需要使用 ctrl+c 来进行强制停止</p>
+</blockquote>
+<p>若使用<code>curl</code>命令，出现下图，则代表网络畅通，配置成功：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="IP4_1.png" />
+
+<h3 id="配置yum镜像源"><a href="#配置yum镜像源" class="headerlink" title="配置yum镜像源"></a>配置yum镜像源</h3><blockquote>
+<p>本文使用的是阿里云yum镜像源</p>
+</blockquote>
+<p>首先使用<code>yum</code>命令下载<code>wget</code>工具：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install wget -y #y参数代表，询问用户是否同意时，一律选择同意</span><br></pre></td></tr></table></figure>
+
+<p>接着前往<code>/etc/yum.repos.d</code>，备份所有仓库文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/yum.repos.d</span><br><span class="line">mkdir backup #备份文件夹</span><br><span class="line">mv *.repo backup</span><br><span class="line">mv epel*.repo backup #若有epel仓库文件</span><br></pre></td></tr></table></figure>
+
+<p>随后拉取阿里云yum源镜像仓库：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">wget /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo #epel为为“红帽系”的操作系统提供额外的软件包</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">更新yum源</span></span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br><span class="line">yum update</span><br></pre></td></tr></table></figure>
+
+<h2 id="编译安装Nginx"><a href="#编译安装Nginx" class="headerlink" title="编译安装Nginx"></a>编译安装Nginx</h2><p>前往官网下载Nginx，<a target="_blank" rel="noopener" href="https://nginx.org/en/download.html" title="下载Nginx">Nginx官网—-下载</a>，选择适合Linux操作系统平台的版本，点击下载，如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="download.png" />
+
+<p>通过<code>ftp</code>工具，将该文件上传至虚拟机中。</p>
+<p>首先将压缩包放在一边。编译安装nginx需要一些前置的环境：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc-c++ -y #g++编译器，编译c++</span><br><span class="line">yum install pcre pcre-devel -y #Nginx的Rewrite模块和HTTP核心模块会使用到的PCRE正则表达式语法库</span><br><span class="line">yum install zlib zlib-devel -y #zlib库提供了开发人员的压缩算法，在Nginx的各种模块中需要使用gzip压缩</span><br><span class="line">yum install openssl openssl-devel -y #若要使用https，则需要安装 OpenSSL 库</span><br></pre></td></tr></table></figure>
+
+<p>前置环境配置完成后，解压Nginx压缩包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf nginx-1.24.0.tar.gz</span><br><span class="line">cd nginx-1.24.0</span><br></pre></td></tr></table></figure>
+
+<p>解压缩后的文件目录如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="nginx_compile_dir.png" />
+
+<p>其中configure即为我们需要的编译文件，执行以下命令进行编译：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx  --with-http_ssl_module #运行configure脚本</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">prefix即为安装后的路径，源文件一般放在usr/local路径</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">--with-http_ssl_module，集成https模块</span></span><br></pre></td></tr></table></figure>
+
+<p>解压成功后，会自动在当前目录生成Makefile文件：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="nginx_configure_down.png" />
+
+<p>随后执行如下命令进行编译安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>出现下图即代表安装完成：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="nginx_compile_install.png" />
+
+<p>随后即可以前往之前设定的目录<code>/usr/local/nginx</code>查看安装完成的Nginx。</p>
+<h2 id="Nginx目录"><a href="#Nginx目录" class="headerlink" title="Nginx目录"></a>Nginx目录</h2><p>Nginx的目录如下所示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br><span class="line">├── client_body_temp</span><br><span class="line">├── conf #配置文件目录</span><br><span class="line">│   ├── fastcgi.conf</span><br><span class="line">│   ├── fastcgi.conf.default</span><br><span class="line">│   ├── fastcgi_params</span><br><span class="line">│   ├── fastcgi_params.default</span><br><span class="line">│   ├── koi-utf</span><br><span class="line">│   ├── koi-win</span><br><span class="line">│   ├── mime.types</span><br><span class="line">│   ├── mime.types.default</span><br><span class="line">│   ├── nginx.conf #nginx的主配置文件,可在nginx.conf通过include包含其他配置文件</span><br><span class="line">│   ├── nginx.conf.default</span><br><span class="line">│   ├── scgi_params</span><br><span class="line">│   ├── scgi_params.default</span><br><span class="line">│   ├── uwsgi_params</span><br><span class="line">│   ├── uwsgi_params.default</span><br><span class="line">│   └── win-utf</span><br><span class="line">├── fastcgi_temp</span><br><span class="line">├── html #静态页面目录，相当于URL中的 / ，nginx将从这里寻找请求的资源</span><br><span class="line">│   ├── 50x.html</span><br><span class="line">│   └── index.html</span><br><span class="line">├── logs #日志文件目录</span><br><span class="line">│   ├── access.log #成功日志文件</span><br><span class="line">│   ├── error.log #错误日志文件</span><br><span class="line">│   └── nginx.pid #nginx启动后会生成的文件，记录了nginx的PID号</span><br><span class="line">├── proxy_temp</span><br><span class="line">├── sbin #二进制文件目录</span><br><span class="line">│   ├── nginx #控制nginx的二进制文件</span><br><span class="line">│   └── nginx.old</span><br><span class="line">├── scgi_temp</span><br><span class="line">└── uwsgi_temp</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Nginx的常用命令"><a href="#Nginx的常用命令" class="headerlink" title="Nginx的常用命令"></a>Nginx的常用命令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./nginx start #启动Nginx</span><br><span class="line">./nginx -s stop #暴力停止Nginx,不管是否还有任务</span><br><span class="line">./nginx -s reload #重新加载配置文件</span><br><span class="line">./nginx -s quit #优雅退出Nginx，此时Nginx不在接受任何请求，将未完成的任务完成后即退出</span><br><span class="line">./nginx -s reopen #重新打开的日志文件和监听套接字</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">-s参数为向Master进程发送signal。 什么是master进程，后面再详解</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="尝试启动Nginx服务"><a href="#尝试启动Nginx服务" class="headerlink" title="尝试启动Nginx服务"></a>尝试启动Nginx服务</h2><p>执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./nginx start</span><br><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent #开启80端口，Nginx默认监听80端口</span><br><span class="line">systemctl restart firewalld #重启防火墙</span><br></pre></td></tr></table></figure>
+
+<p>随后前往浏览器访问<code>&lt;你的虚拟机IP&gt;:80</code>或者在虚拟机中输入<code>curl localhost:80</code>，出现如下所示图片，即代表启动成功：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="nginx_start_url.png" />
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="nginx_start_curl.png" />
+
+<h2 id="配置Nginx为系统服务"><a href="#配置Nginx为系统服务" class="headerlink" title="配置Nginx为系统服务"></a>配置Nginx为系统服务</h2><p>使用<code>vi</code>命令编辑，位于<code>/lib/systemd/system</code> 的 <code>nginx.service</code>文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /lib/systemd/system/nginx.service</span><br></pre></td></tr></table></figure>
+
+<p>输入以下内容：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">[Unit]</span></span><br><span class="line"><span class="attr">Description</span>=<span class="string">nginx - high performance web server #该服务的描述</span></span><br><span class="line"><span class="attr">After</span>=<span class="string">network.target remote-fs.target nss-lookup.target #在什么服务之后执行</span></span><br><span class="line"></span><br><span class="line"><span class="attr">[Service]</span></span><br><span class="line"><span class="attr">Type</span>=<span class="string">simple #启动方式，告诉Systemd什么时候服务启动完成</span></span><br><span class="line"><span class="attr">PIDFile</span>=<span class="string">/usr/local/nginx/logs/nginx.pid #PID文件路径</span></span><br><span class="line"><span class="attr">ExecStartPre</span>=<span class="string">/usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf #start前执行什么</span></span><br><span class="line"><span class="attr">ExecStart</span>=<span class="string">/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf #start执行命令</span></span><br><span class="line"><span class="attr">ExecReload</span>=<span class="string">/usr/local/nginx/sbin/nginx -s reload  #reload执行命令</span></span><br><span class="line"><span class="attr">ExecQuit</span>=<span class="string">/usr/local/nginx/sbin/nginx -s quit #quit执行命令</span></span><br><span class="line"><span class="attr">ExecStop</span>=<span class="string">/usr/local/nginx/sbin/nginx -s stop #stop执行命令</span></span><br><span class="line"><span class="attr">PrivateTmp</span>=<span class="string">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">[Install]</span></span><br><span class="line"><span class="attr">WantedBy</span>=<span class="string">multi-user.target</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑完成后，保存退出，重启Systemd。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl enable nginx #设置ngixn为开机自启服务</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过sytemctl控制Nginx"><a href="#通过sytemctl控制Nginx" class="headerlink" title="通过sytemctl控制Nginx"></a>通过sytemctl控制Nginx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start|reload|stop|quit nginx #同nginx的内部命令</span><br><span class="line">systemctl status nginx #查看nginx现在的状态</span><br><span class="line">journalctl -xe #查看systemd的日志</span><br></pre></td></tr></table></figure>
+
+<p>通过systemctl启动nginx，注意：启动前请停止之前启动过的nginx。随后查看nginx的状态，如下图所示则启动成功。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="nginx_avtive.png" />
+
+<p>现在也可以在外部访问nginx服务器。</p>
+<p>若启动失败，请检查service文件的编写是否正确。</p>
+<ul>
+<li>所有<code>Exec....</code>均为绝对路径，且保证路径正确</li>
+<li>尝试关闭selinux。<ul>
+<li><code>setenforce 0</code></li>
+</ul>
+</li>
+<li>重启systemd</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://funkynoob.github.io">JiangHaiYang aka Funkynoob</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://funkynoob.github.io/2024/01/23/nginx/">https://funkynoob.github.io/2024/01/23/nginx/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://funkynoob.github.io" target="_blank">Funkynoob的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Nginx/">Nginx</a></div><div class="post_share"><div class="social-share" data-image="/images/funkynoob_avatar.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/12/04/music-gallery/" title="音乐及画廊配置以及一些小配置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">音乐及画廊配置以及一些小配置</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/images/funkynoob_avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">JiangHaiYang aka Funkynoob</div><div class="author-info__description">来自四川985大学川清华</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Funkynoob"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Funkynoob" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:poppingnoob@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/images/qq.jpg" target="_blank" title="qq"><i class="fa-brands fa-qq"></i></a><a class="social-icon" href="/images/wx.png" target="_blank" title="wechat"><i class="fa-brands fa-weixin"></i></a><a class="social-icon" href="https://steamcommunity.com/profiles/76561198888059361" target="_blank" title="steam"><i class="fa-brands fa-steam"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎光临寒舍</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Nginx%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">Nginx学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CentOS%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">CentOS配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81IP"><span class="toc-number">1.1.1.</span> <span class="toc-text">静态IP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VmWare%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">VmWare配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">虚拟机设置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEyum%E9%95%9C%E5%83%8F%E6%BA%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">配置yum镜像源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx"><span class="toc-number">1.2.</span> <span class="toc-text">编译安装Nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx%E7%9B%AE%E5%BD%95"><span class="toc-number">1.3.</span> <span class="toc-text">Nginx目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.</span> <span class="toc-text">Nginx的常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E5%90%AF%E5%8A%A8Nginx%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.5.</span> <span class="toc-text">尝试启动Nginx服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AENginx%E4%B8%BA%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.6.</span> <span class="toc-text">配置Nginx为系统服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87sytemctl%E6%8E%A7%E5%88%B6Nginx"><span class="toc-number">1.6.1.</span> <span class="toc-text">通过sytemctl控制Nginx</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/23/nginx/" title="Nginx">Nginx</a><time datetime="2024-01-23T14:08:01.000Z" title="发表于 2024-01-23 22:08:01">2024-01-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/04/music-gallery/" title="音乐及画廊配置以及一些小配置">音乐及画廊配置以及一些小配置</a><time datetime="2023-12-04T15:16:52.000Z" title="发表于 2023-12-04 23:16:52">2023-12-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/02/first-hexo/" title="部署hexo博客----第一次">部署hexo博客----第一次</a><time datetime="2023-12-02T12:11:59.000Z" title="发表于 2023-12-02 20:11:59">2023-12-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/02/soft-design-struct/" title="软件设计架构----张立人">软件设计架构----张立人</a><time datetime="2023-12-02T05:20:08.000Z" title="发表于 2023-12-02 13:20:08">2023-12-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By JiangHaiYang aka Funkynoob</div><div class="footer_custom_text">爱来自瓷器❤</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const abcjsInit = () => {
+    const abcjsFn = () => {
+      document.querySelectorAll(".abc-music-sheet").forEach(ele => {
+        ABCJS.renderAbc(ele, ele.innerHTML, {responsive: 'resize'})
+      })
+    }
+    
+    typeof ABCJS === 'object' ? abcjsFn()
+      : getScript('https://cdn.jsdelivr.net/npm/abcjs/dist/abcjs-basic-min.min.js').then(abcjsFn)
+  }
+
+  window.pjax ? abcjsInit() : window.addEventListener('load', abcjsInit)
+})()</script></div><div class="aplayer no-destroy" data-id="476341452" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
