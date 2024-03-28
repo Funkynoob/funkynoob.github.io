@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Funkynoob的个人博客 • Posts by &#34;docker&#34; category</title>
+        <link>https://blog.riversea.top</link>
+        <description>亿点点心得</description>
+        <language>zh-CN</language>
+        <pubDate>Sun, 10 Mar 2024 13:07:52 +0800</pubDate>
+        <lastBuildDate>Sun, 10 Mar 2024 13:07:52 +0800</lastBuildDate>
+        <category>docker</category>
+        <category>Git</category>
+        <category>Nginx</category>
+        <category>ORM框架</category>
+        <category>MyBatis</category>
+        <category>redis</category>
+        <category>spring</category>
+        <item>
+            <guid isPermalink="true">https://blog.riversea.top/2024/03/10/docker/</guid>
+            <title>docker</title>
+            <link>https://blog.riversea.top/2024/03/10/docker/</link>
+            <category>docker</category>
+            <pubDate>Sun, 10 Mar 2024 13:07:52 +0800</pubDate>
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;script class=&#34;meting-secondary-script-marker&#34; src=&#34;\assets\js\Meting.min.js&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;什么是docker&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#什么是docker&#34;&gt;#&lt;/a&gt; 什么是 Docker&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;docker&lt;/code&gt;  提供了一个平台为开发，转交，测试，以及运行应用提供了便利，让应用从操作系统等底层环境中分离开，不再受底层环境的桎梏。 &lt;code&gt;docker&lt;/code&gt;  提供了一种名为 &lt;strong&gt;容器&lt;/strong&gt; 的特性，让应用的运行与打包，在一个隔离的环境中。&lt;/p&gt;
+&lt;h1 id=&#34;容器container&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#容器container&#34;&gt;#&lt;/a&gt; 容器 (container)&lt;/h1&gt;
+&lt;p&gt;容器是提供给代码运行的隔离的环境。这意味着容器对你的操作系统或者文件系统一无所知。容器提供了代码运行的所有必要的东西，像是软件运行的必要的环境、类库，甚至是最底层的操作系统。你可以将容器类比为集装箱 —— 事实上这也是  &lt;code&gt;docker&lt;/code&gt;  logo 的类比。容器就好似集装箱一样，所有的集装箱之间互不干扰。&lt;/p&gt;
+&lt;h2 id=&#34;镜像image&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#镜像image&#34;&gt;#&lt;/a&gt; 镜像 (image)&lt;/h2&gt;
+&lt;p&gt;镜像和容器的关系类似于类和对象的、程序和进程的关系。镜像在本地运行起来之后就是容器。镜像由开发人员所维护以及编写，镜像包括了代码运行的所有必要的环境。&lt;/p&gt;
+&lt;h3 id=&#34;如何获得镜像&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#如何获得镜像&#34;&gt;#&lt;/a&gt; 如何获得镜像&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Docker&lt;/code&gt;  官方提供了一个镜像仓库 —— &lt;a href=&#34;https://hub.docker.com/&#34;&gt;Docker hub&lt;/a&gt;，类似于  &lt;code&gt;Github&lt;/code&gt;  这样的代码托管平台，该镜像仓库托管了所有官方或者第三方提供的镜像。&lt;/p&gt;
+&lt;img src=&#34;docker/docker_hub.png&#34; alt=&#34;docker hub&#34;/&gt;
+&lt;p&gt;由于  &lt;code&gt;docker hub&lt;/code&gt;  是国外的，可以使用一些镜像仓库进行加速，例如阿里云、腾讯云。&lt;/p&gt;
+&lt;p&gt;通过以下命令拉取镜像：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker pull &amp;lt;image&amp;gt;:[tag] #如果不指定tag，tag将会是默认值：latest&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;某个版本的镜像由镜像名和 tag 进行指定&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;查看本地镜像&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看本地镜像&#34;&gt;#&lt;/a&gt; 查看本地镜像&lt;/h2&gt;
+&lt;p&gt;查看本地的所有镜像：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker images&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;查看某个镜像的详细信息：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker image inspect &amp;lt;image-name&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;删除本地镜像&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#删除本地镜像&#34;&gt;#&lt;/a&gt; 删除本地镜像&lt;/h3&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker rmi &amp;lt;image-name&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;运行容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#运行容器&#34;&gt;#&lt;/a&gt; 运行容器&lt;/h2&gt;
+&lt;p&gt;如何将镜像运行起来？ &lt;code&gt;docker&lt;/code&gt;  提供了一个子命令，来将镜像运行为容器。：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker run&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果该镜像本地没有，则会进行远程拉取&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;假设现在我们有一个名为： &lt;code&gt;mysql&lt;/code&gt;  的镜像，我们来演示如何运行它：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker run -d|--detach #-d参数代表后台运行，并打印容器Id，如果不加这个参数，那么执行这个命令后，你的命令行会卡住，无法输入命令&lt;br&gt;--name mysql #--name，为该容器分配一个名字&lt;br&gt;-p|--publish 3306:3306 #-p为该容器分配一个端口映射，由于外部无法直接访问容器内部，因此需要进行端口映射。代表着宿主机的3306端口映射到容器的3306端口&lt;br&gt;-e|--env TZ=Asia/Shanghai #-e为容器写入环境变量，前面提到容器本事其实就算一个操作系统，所以理应由环境变量，该环境变量由容器中的容器读写&lt;br&gt;-e MYSQL_ROOT_PASSWORD=123&lt;br&gt;mysql #镜像名&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;好了，当你按下回车的那一刻，一个名为  &lt;code&gt;mysql&lt;/code&gt;  的容器就开始创建了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;环境变量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#环境变量&#34;&gt;#&lt;/a&gt; 环境变量&lt;/h3&gt;
+&lt;p&gt;你可能想问，我怎么知道有哪些环境变量我可以使用。其实，每个镜像都配备了官方文档，你可以在上面寻找官方提供的环境变量，在&lt;a href=&#34;https://hub.docker.com/&#34;&gt; Docker hub&lt;/a&gt; 上面搜索  &lt;code&gt;mysql&lt;/code&gt;  找到最高  &lt;code&gt;star&lt;/code&gt;  的那个镜像：&lt;/p&gt;
+&lt;img src=&#34;docker/mysql.png&#34; alt=&#34;mysql镜像&#34;/&gt;
+&lt;p&gt;点进去，持续往下翻，直到你看到：&lt;/p&gt;
+&lt;img src=&#34;docker/mysql_doc.png&#34; alt=&#34;mysql镜像&#34;/&gt;
+&lt;p&gt;现在你就知道了官方给我们提供了哪些环境变量。如图， &lt;code&gt;MYSQL_ROOT_PASSWORD&lt;/code&gt;  代表着数据库的密码&lt;/p&gt;
+&lt;h2 id=&#34;如何查看运行的容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#如何查看运行的容器&#34;&gt;#&lt;/a&gt; 如何查看运行的容器&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;docker&lt;/code&gt;  提供了一个子命令，用于查看运行的容器：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker ps &amp;lt;container&amp;gt; &lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;大概样式如下：&lt;/p&gt;
+&lt;img src=&#34;docker/docker_ps.png&#34; alt=&#34;运行中的容器&#34;/&gt;
+&lt;h2 id=&#34;启动-停止-删除&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#启动-停止-删除&#34;&gt;#&lt;/a&gt; 启动、停止、删除&lt;/h2&gt;
+&lt;p&gt;如果你想暂停一个容器，那么只需要使用如下命令，即可暂停容器：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker stop &amp;lt;container-name&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;请注意，即使你暂停了容器，该容器任然存在，只是没有在运行了而已&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果此时你想重新启动这个容器，那么使用如下命令：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker start &amp;lt;container-name&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;请注意，不要使用  &lt;code&gt;docker run&lt;/code&gt;  因为，该命令总是新创建一个容器，而不是启动原来的容器，请注意与  &lt;code&gt;docker start&lt;/code&gt;  的区别&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果你想删除一个容器，那么运行下面的命令：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker rm &amp;lt;container-name&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果此时你的容器正在运行，那么依靠上面的命令你是无法删除的，使用如下命令进行强制删除：&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs java&#34;&gt;docker rm &amp;lt;container-name&amp;gt; -f&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;数据卷volume&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据卷volume&#34;&gt;#&lt;/a&gt; 数据卷 (volume)&lt;/h1&gt;
+&lt;h2 id=&#34;如何进入容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#如何进入容器&#34;&gt;#&lt;/a&gt; 如何进入容器&lt;/h2&gt;
+&lt;p&gt;之前提到容器相当于操作系统，每个操作系统都有它自己的文件系统，所以如何进入到容器内部操纵里面的文件呢？&lt;/p&gt;
+&lt;p&gt;使用  &lt;code&gt;docker&lt;/code&gt;  提供的如下子命令：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker exec&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;该命令会在容器内部运行你提供的命令，该命令会运行在默认的目录下，且必须保证命令是可执行，链式的或者引用的命令是无法执行的，例如&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;该命令可以执行:  &lt;code&gt;docker exec -it my_container sh -c &amp;quot;echo a &amp;amp;&amp;amp; echo b&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;该命令不可以执行:  &lt;code&gt;docker exec -it my_container &amp;quot;echo a &amp;amp;&amp;amp; echo b&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用如下命令进入容器内部：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker exec -it &amp;lt;container-name&amp;gt; bash&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;回车后你会发现，主机名改变了，使用  &lt;code&gt;ls&lt;/code&gt;  命令，你将会看到如  &lt;code&gt;linux&lt;/code&gt;  一般的文件系统。&lt;/p&gt;
+&lt;p&gt;此时你可能会迫不及待，打算执行一些操作，于是你新创建一个名为  &lt;code&gt;test&lt;/code&gt;  的文件，然后尝试用  &lt;code&gt;vi&lt;/code&gt;  命令进行编辑，可是当你执行过后会发现， &lt;code&gt;vi&lt;/code&gt;  命令找不到。这是怎么回事呢？明明容器就如操作系统一样，应该也会包含所有的命令的啊。&lt;/p&gt;
+&lt;p&gt;结论是：镜像所创建的环境仅仅会包含和镜像应用有关的命令，所有不会包含所有的命令。所有，你在有关  &lt;code&gt;mysql&lt;/code&gt;  的容器中使用  &lt;code&gt;mysql&lt;/code&gt;  命令会成功，而你在不包含  &lt;code&gt;mysql&lt;/code&gt;  的容器中使用，则会失败。&lt;/p&gt;
+&lt;h2 id=&#34;和容器进行连接&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#和容器进行连接&#34;&gt;#&lt;/a&gt; 和容器进行连接&lt;/h2&gt;
+&lt;p&gt;如果有些命令无法使用，拿我想修改容器中的数据的时候该怎么办？  &lt;code&gt;docker&lt;/code&gt;  提供了一个特性 —— 数据卷，来帮助我们完成这个操作。&lt;/p&gt;
+&lt;p&gt;什么是数据卷？在操作系统中，万物皆文件，数据卷就是挂载载文件系统上的设备。像物理机上的硬盘就是数据卷。当然在  &lt;code&gt;docker&lt;/code&gt;  中数据卷只是逻辑的。&lt;/p&gt;
+&lt;p&gt;所以，该如何使用这个数据卷呢？相信你一定使用过  &lt;code&gt;u盘&lt;/code&gt;  ，当你插上  &lt;code&gt;u盘&lt;/code&gt;  后，你的文件系统就会将这个  &lt;code&gt;u盘&lt;/code&gt;  挂载到文件系统上，你就能通过文件的形式访问  &lt;code&gt;u盘&lt;/code&gt;  的数据。&lt;/p&gt;
+&lt;p&gt;所以我们要做的就是，将  &lt;code&gt;docker&lt;/code&gt;  容器中的文件看成  &lt;code&gt;u 盘&lt;/code&gt;  将其挂载到我们的宿主机的文件系统上，然后就能通过宿主机修改容器的数据。这就是数据卷的作用。那么我们该如何使用？&lt;/p&gt;
+&lt;h2 id=&#34;挂载数据卷&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#挂载数据卷&#34;&gt;#&lt;/a&gt; 挂载数据卷&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据卷只能在运行容器时进行挂载。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在运行  &lt;code&gt;docker run&lt;/code&gt;  时只需要添加一个选项即可，如下：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker run -d|--detach #-d参数代表后台运行，并打印容器Id，如果不加这个参数，那么执行这个命令后，你的命令行会卡住，无法输入命令&lt;br&gt;--name mysql #--name，为该容器分配一个名字&lt;br&gt;-p|--publish 3306:3306 #-p为该容器分配一个端口映射，由于外部无法直接访问容器内部，因此需要进行端口映射。代表着宿主机的3306端口映射到容器的3306端口&lt;br&gt;-e|--env TZ=Asia/Shanghai #-e为容器写入环境变量，前面提到容器本事其实就算一个操作系统，所以理应由环境变量，该环境变量由容器中的容器读写&lt;br&gt;-e MYSQL_ROOT_PASSWORD=123 &lt;br&gt;-v source:/var/lib/mysql #将名为source的数据卷与/var/lib/mysql相映射&lt;br&gt;mysql #镜像名&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据卷默认存放在： &lt;code&gt;/var/lib/docker/volumes/&amp;lt;volume-name&amp;gt;/_data&lt;/code&gt;  目录下&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;现在你就能在： &lt;code&gt;/var/lib/docker/volumes/source/_data&lt;/code&gt;  下看到你挂载的数据卷了，里面包含了容器中  &lt;code&gt;/var/lib/mysql&lt;/code&gt;  目录下的所有的文件&lt;/p&gt;
+&lt;p&gt;当然你也可以运行以下命令来提前创建一个数据卷：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker volume create [volume-name]&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果你不指定数据卷的名字，那么会使用一段  &lt;code&gt;hash&lt;/code&gt;  值来作为数据卷的名字。现在，请前往之前所说的那个目录下，你已经能看到这个数据卷了。当然，数据卷下面并没有任何数据，因为你没有进行挂载。然后你可以在运行容器时使用该数据卷的名字进行挂载。&lt;/p&gt;
+&lt;h3 id=&#34;自定义数据卷位置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#自定义数据卷位置&#34;&gt;#&lt;/a&gt; 自定义数据卷位置&lt;/h3&gt;
+&lt;p&gt;如果你不想让数据卷放在默认位置下，你可以在运行容器时指定目录：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker run -dp 80:80 &lt;br&gt;--name docker-demo&lt;br&gt;-v /root:/var/lib/nginx #我们在root目录下进行挂载&lt;br&gt;docker-demo &lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;前外  &lt;code&gt;/root&lt;/code&gt;  目录下，你就能看到这个数据卷&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意自定义目录必须要以绝对路径起首，不然会被默认为默认数据卷&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;查看数据卷&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看数据卷&#34;&gt;#&lt;/a&gt; 查看数据卷&lt;/h2&gt;
+&lt;p&gt;你可以使用，如下命令查看所有的数据卷：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker volume ls&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果你想查看某个数据卷的详细信息，可以使用如下命令：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker volume inspect &amp;lt;volume-name&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;网络network&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网络network&#34;&gt;#&lt;/a&gt; 网络 (network)&lt;/h1&gt;
+&lt;p&gt;现在让我考考你一个问题。如果现在有两个容器，一个是数据库，一个是服务器，服务器想要访问数据库怎么办呢。前面说到，容器是一个个隔离的环境，如何才能让容器之间通信呢？&lt;/p&gt;
+&lt;p&gt;容器作为操作系统，当然有自己的&lt;strong&gt;网络&lt;/strong&gt;。 &lt;code&gt;docker&lt;/code&gt;  在运行的时候会初始化一张虚拟网卡，现在前往你的宿主机尝试一下  &lt;code&gt;ip addr&lt;/code&gt;  命令，如果你的  &lt;code&gt;docker&lt;/code&gt;  在运行中，不出意外你将会看到：&lt;/p&gt;
+&lt;img src=&#34;docker/net_adapter.png&#34; alt=&#34;docker的虚拟网卡&#34;/&gt;
+&lt;p&gt;这就是  &lt;code&gt;docker&lt;/code&gt;  生成的虚拟网卡。意味着容器本身之间也能进行&lt;strong&gt;通信&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;使用默认的网络&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#使用默认的网络&#34;&gt;#&lt;/a&gt; 使用默认的网络&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;docker&lt;/code&gt;  会初始化一个  &lt;code&gt;docker0&lt;/code&gt;  的网卡，分配一个名为  &lt;code&gt;bridge&lt;/code&gt;  的默认网段。所有启动的容器将会默认使用这个网段，并分配一个  &lt;code&gt;ip&lt;/code&gt;  地址，但 &lt;code&gt;docker&lt;/code&gt;  官方并不推荐使用默认的网络，而是推荐 —— 自定义网络&lt;/p&gt;
+&lt;h2 id=&#34;自定义网络&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#自定义网络&#34;&gt;#&lt;/a&gt; 自定义网络&lt;/h2&gt;
+&lt;p&gt;在  &lt;code&gt;docker&lt;/code&gt;  中只有同一网段的&lt;strong&gt;容器&lt;/strong&gt;才能互相通信。你可以创建自定义的&lt;strong&gt;网络&lt;/strong&gt;，然后将容器连接到这个自定义的网络上，一旦容器连接到同一个网络上，容器中间就能通过  &lt;code&gt;ip&lt;/code&gt;  地址或者容器名进行通信。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker&lt;/code&gt;  提供了用于创建网络的命令：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker network create &amp;lt;network-name&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;该令会创建一个默认基于  &lt;code&gt;driver&lt;/code&gt;  网卡的网络，该网络会被分配一个网段。&lt;/p&gt;
+&lt;h2 id=&#34;连接网络&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#连接网络&#34;&gt;#&lt;/a&gt; 连接网络&lt;/h2&gt;
+&lt;p&gt;现在你可以在运行容器的时候，连接指定的网络：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker run -d|--detach #-d参数代表后台运行，并打印容器Id，如果不加这个参数，那么执行这个命令后，你的命令行会卡住，无法输入命令&lt;br&gt;--name mysql #--name，为该容器分配一个名字&lt;br&gt;-p|--publish 3306:3306 #-p为该容器分配一个端口映射，由于外部无法直接访问容器内部，因此需要进行端口映射。代表着宿主机的3306端口映射到容器的3306端口&lt;br&gt;-e|--env TZ=Asia/Shanghai #-e为容器写入环境变量，前面提到容器本事其实就算一个操作系统，所以理应由环境变量，该环境变量由容器中的容器读写&lt;br&gt;-e MYSQL_ROOT_PASSWORD=123 &lt;br&gt;--network=&amp;lt;network-name&amp;gt;&lt;br&gt;mysql #镜像名&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;一旦你运行这个容器，该容器会加入这个网络，并分配一个  &lt;code&gt;ip&lt;/code&gt;  地址&lt;/p&gt;
+&lt;p&gt;或者你可以为一个已经运行的容器连接网络：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;docker network connet &amp;lt;network-name&amp;gt; &amp;lt;container-name&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;层layer&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#层layer&#34;&gt;#&lt;/a&gt; 层 (layer)&lt;/h1&gt;
+&lt;p&gt;了解完上述概念，相信你已经能运行一个自己的容器了。&lt;/p&gt;
+&lt;p&gt;现在让我们来思考一个问题：如果我们拉取两个镜像 —— 一个是只有操作系统的镜像，另外一个是建立在该操作系统上的  &lt;code&gt;jre&lt;/code&gt;  镜像。那么，拉取完操作系统镜像后，并在拉取  &lt;code&gt;jre&lt;/code&gt;  镜像时会再继续拉取一个包含操作系统的  &lt;code&gt;jre&lt;/code&gt;  环境吗？&lt;/p&gt;
+&lt;p&gt;答案是不会的，这就涉及到了  &lt;code&gt;docker&lt;/code&gt;  的一个重要概念 —— &lt;strong&gt;层 (layer)&lt;/strong&gt;。 &lt;code&gt;docker&lt;/code&gt;  将容器成了多个层，层与层之间能够复用。如果两个镜像包含了相同的层，那么相同的层将不会进行重复拉取而是复用，这就增加了镜像的复用性，减少了镜像的空间大小。每个镜像都可以建立在某个层上，对某个层进行扩展和补充形成新的层。&lt;/p&gt;
+&lt;p&gt;我们把那些提供基础环境的层叫做：基础镜像&lt;/p&gt;
+&lt;h1 id=&#34;自定义镜像&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#自定义镜像&#34;&gt;#&lt;/a&gt; 自定义镜像&lt;/h1&gt;
+&lt;p&gt;使用  &lt;code&gt;dcoker&lt;/code&gt;  我们可以自定义镜像，但我们不用去实现镜像的细节，我们只需要告诉  &lt;code&gt;docker&lt;/code&gt;  这个镜像需要什么，然后  &lt;code&gt;docker&lt;/code&gt;  帮我们组装这个镜像。那么，我们如何告诉  &lt;code&gt;docker&lt;/code&gt;  我们需要什么呢？ &lt;code&gt;docker&lt;/code&gt;  提供了一个文件 ——  &lt;code&gt;Dockerfile&lt;/code&gt;  来让我们编写自定义镜像的细节。&lt;/p&gt;
+&lt;h2 id=&#34;编写dockerfile&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#编写dockerfile&#34;&gt;#&lt;/a&gt; 编写 Dockerfile&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Dockerfile&lt;/code&gt;  常用的命令：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;FROM #用于设置容器的基础镜像，用于应用运行的基础环境&lt;br&gt;WORKDIR &amp;lt;path&amp;gt; #容器的工作目录，当你进入容器的文件系统后，默认为该目录&lt;br&gt;COPY &amp;lt;src&amp;gt; &amp;lt;target&amp;gt;  #将宿主机的文件拷贝至容器的目录下&lt;br&gt;RUN #在构建镜像时执行一些命令&lt;br&gt;EXPOSE #暴露的端口，通知Docker监听的端口&lt;br&gt;CMD [&amp;quot;executable&amp;quot;,&amp;quot;param1&amp;quot;,&amp;quot;param2&amp;quot;] #在容器运行后执行&lt;br&gt;ENV key=value... #添加环境变量&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;cmd&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cmd&#34;&gt;#&lt;/a&gt; CMD&lt;/h2&gt;
+&lt;p&gt;当你运行时容器，会执行  &lt;code&gt;CMD&lt;/code&gt;  给出的指令，公有三种形式：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;CMD [&amp;quot;executable&amp;quot;,&amp;quot;param1&amp;quot;,&amp;quot;param2&amp;quot;] #executable形式：executable是执行的命令，param时给命令的参数&lt;br&gt;CMD [&amp;quot;param1&amp;quot;,&amp;quot;param2&amp;quot;] #param会传递给ENTRYPOINT&lt;br&gt;CMD command param1 param2 (shell form) #shell形式，默认用shell命令，shell类型默认为sh&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;只能存在一条  &lt;code&gt;CMD&lt;/code&gt;  语句，如果存在多条，只使用最后一条语句&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;entrypoint&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#entrypoint&#34;&gt;#&lt;/a&gt; ENTRYPOINT&lt;/h2&gt;
+&lt;p&gt;与  &lt;code&gt;CMD&lt;/code&gt;  类似，共有两种形式：&lt;/p&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs shell&#34;&gt;ENTRYPOINT [&amp;quot;executable&amp;quot;, &amp;quot;param1&amp;quot;, &amp;quot;param2&amp;quot;] #executable形式：executable是执行的命令，param时给命令的参数&lt;br&gt;ENTRYPOINT command param1 param2  #shell形式，默认用设定的shell类型去执行，shell类型默认为sh&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;只能存在一条  &lt;code&gt;ENTRYPOINT&lt;/code&gt;  语句，如果存在多条，只使用最后一条语句&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;CMD&lt;/code&gt;  与  &lt;code&gt;ENTRYPOINT&lt;/code&gt;  不同之处在于， &lt;code&gt;ENTRYPOINT&lt;/code&gt;  不可以被  &lt;code&gt;docker run&lt;/code&gt;  后的参数覆盖，会把  &lt;code&gt;docker run&lt;/code&gt;  后面的参数传递给  &lt;code&gt;ENTRYPOINT&lt;/code&gt;  指定的参数。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以下为实例：&lt;/p&gt;
+&lt;figure class=&#34;highlight dockerfile&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;code class=&#34;hljs dockerfile&#34;&gt;&lt;span class=&#34;hljs-keyword&#34;&gt;FROM&lt;/span&gt; node:&lt;span class=&#34;hljs-number&#34;&gt;18&lt;/span&gt;-alpine &lt;span class=&#34;hljs-comment&#34;&gt;#dockerfile开头通常为FROM以引入基础环境&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-keyword&#34;&gt;WORKDIR&lt;/span&gt;&lt;span class=&#34;language-bash&#34;&gt; /app &lt;span class=&#34;hljs-comment&#34;&gt;#设置工作路径 /app&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-keyword&#34;&gt;COPY&lt;/span&gt;&lt;span class=&#34;language-bash&#34;&gt; package*.json ./ &lt;span class=&#34;hljs-comment&#34;&gt;#拷贝待用package的json文件至 /app 下面&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-keyword&#34;&gt;COPY&lt;/span&gt;&lt;span class=&#34;language-bash&#34;&gt; ./src ./src &lt;span class=&#34;hljs-comment&#34;&gt;#仍然时拷贝&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;hljs-keyword&#34;&gt;COPY&lt;/span&gt;&lt;span class=&#34;language-bash&#34;&gt; ./public ./public&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-keyword&#34;&gt;RUN&lt;/span&gt;&lt;span class=&#34;language-bash&#34;&gt; npm install \ &lt;span class=&#34;hljs-comment&#34;&gt;#运行命令&lt;/span&gt;&lt;/span&gt;&lt;br&gt;    &amp;amp;&amp;amp; npm install -g serve \&lt;br&gt;    &amp;amp;&amp;amp; npm &lt;span class=&#34;hljs-keyword&#34;&gt;run&lt;/span&gt;&lt;span class=&#34;language-bash&#34;&gt; build \&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;language-bash&#34;&gt;    &amp;amp;&amp;amp; &lt;span class=&#34;hljs-built_in&#34;&gt;rm&lt;/span&gt; -fr node_modules&lt;/span&gt;&lt;br&gt; &lt;br&gt;&lt;span class=&#34;hljs-keyword&#34;&gt;EXPOSE&lt;/span&gt; &lt;span class=&#34;hljs-number&#34;&gt;3000&lt;/span&gt; &lt;span class=&#34;hljs-comment&#34;&gt;#暴露端口&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&#34;hljs-keyword&#34;&gt;CMD&lt;/span&gt;&lt;span class=&#34;language-bash&#34;&gt; [ &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;serve&amp;quot;&lt;/span&gt;, &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;-s&amp;quot;&lt;/span&gt;, &lt;span class=&#34;hljs-string&#34;&gt;&amp;quot;build&amp;quot;&lt;/span&gt; ] &lt;span class=&#34;hljs-comment&#34;&gt;#容器运行时执行命令&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
